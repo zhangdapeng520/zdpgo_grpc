@@ -1,0 +1,17 @@
+syntax = "proto3";
+option go_package = "../proto";
+
+service StreamResponseServer{
+  // 服务端流模式
+  rpc ServerStream(StreamResponseRequest) returns (stream StreamResponseResponse);
+}
+
+// 流式请求：和普通请求没有区别
+message StreamResponseRequest{
+  string data = 1;
+}
+
+// 流式响应：和普通响应没有区别
+message StreamResponseResponse{
+  string data = 1;
+}

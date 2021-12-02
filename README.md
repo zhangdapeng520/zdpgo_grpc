@@ -1,2 +1,7 @@
 # zgo_grpc
-快速使用GRPC相关功能的基础组件
+
+## 常用命令
+生成proto
+```shell
+protoc -I . *.proto --go_out=plugins=grpc:.
+```
