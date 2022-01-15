@@ -24,7 +24,7 @@ func main() {
 	ctx, _ := context.WithTimeout(context.Background(), time.Second*3)
 
 	// 发送请求获取数据
-	_, err = c.SayHello(ctx, &proto.HelloRequest{Name: "zhangdapeng"})
+	_, err = c.SayHello(ctx, &proto.HelloRequest{Name: "张大鹏"})
 
 	// 处理错误
 	if err != nil {

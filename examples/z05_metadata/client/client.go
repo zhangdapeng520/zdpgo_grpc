@@ -29,7 +29,7 @@ func main() {
 	ctx := metadata.NewOutgoingContext(context.Background(), md)
 
 	// 携带metadata发送请求
-	r, err := c.SayHello(ctx, &proto.HelloRequest{Name: "zhangdapeng"})
+	r, err := c.SayHello(ctx, &proto.HelloRequest{Name: "张大鹏"})
 	if err != nil {
 		panic(err)
 	}

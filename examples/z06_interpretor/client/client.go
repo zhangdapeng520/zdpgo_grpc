@@ -37,7 +37,7 @@ func main() {
 
 	// 创建客户端并发送请求
 	c := proto.NewGreeterClient(conn)
-	r, err := c.SayHello(context.Background(), &proto.HelloRequest{Name: "zhangdapeng"})
+	r, err := c.SayHello(context.Background(), &proto.HelloRequest{Name: "张大鹏"})
 	if err != nil {
 		panic(err)
 	}

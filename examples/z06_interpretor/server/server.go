@@ -10,7 +10,9 @@ import (
 	"zdpgo_grpc/examples/proto"
 )
 
-type Server struct{}
+type Server struct {
+	proto.UnsafeGreeterServer
+}
 
 func (s *Server) SayHello(ctx context.Context, request *proto.HelloRequest) (*proto.HelloReply,
 	error) {
@@ -36,15 +38,24 @@ func main() {
 		return res, err
 	}
 
+	// 使用拦截器
 	opt := grpc.UnaryInterceptor(interceptor)
+
+	// 创建服务，带拦截器
 	g := grpc.NewServer(opt)
+
+	// 注册服务
 	proto.RegisterGreeterServer(g, &Server{})
+
+	// 监听端口
 	lis, err := net.Listen("tcp", "0.0.0.0:50051")
 	if err != nil {
-		panic("failed to listen:" + err.Error())
+		panic("监听端口失败：" + err.Error())
 	}
+
+	// 启动服务
 	err = g.Serve(lis)
 	if err != nil {
-		panic("failed to start grpc:" + err.Error())
+		panic("启动服务失败：" + err.Error())
 	}
 }
