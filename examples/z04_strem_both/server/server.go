@@ -10,7 +10,9 @@ import (
 	"zdpgo_grpc/examples/proto"
 )
 
-type Server struct{}
+type Server struct {
+	proto.UnimplementedStreamBothServerServer
+}
 
 // 实现接口方法
 // 参数1：双向数据流服务对象（rpc接口方法）

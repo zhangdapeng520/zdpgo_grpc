@@ -8,7 +8,9 @@ import (
 	"zdpgo_grpc/examples/proto"
 )
 
-type Server struct{}
+type Server struct {
+	proto.UnimplementedStreamRequestServerServer
+}
 
 // 实现接口方法，只需要有一个请求流服务器
 func (s *Server) ClientStream(server proto.StreamRequestServer_ClientStreamServer) error {

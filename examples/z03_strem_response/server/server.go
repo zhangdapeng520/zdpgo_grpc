@@ -9,7 +9,9 @@ import (
 	"zdpgo_grpc/examples/proto"
 )
 
-type Server struct{}
+type Server struct {
+	proto.UnimplementedStreamResponseServerServer
+}
 
 // 实现接口方法
 // 参数1：客户端请求对象
