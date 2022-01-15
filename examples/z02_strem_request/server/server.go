@@ -5,7 +5,7 @@ import (
 	"net"
 
 	"google.golang.org/grpc"
-	"zgo_grpc/examples/proto"
+	"zdpgo_grpc/examples/proto"
 )
 
 type Server struct{}

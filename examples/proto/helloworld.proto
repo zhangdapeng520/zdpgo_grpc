@@ -1,15 +1,15 @@
-syntax = "proto3";
-option go_package = "../proto";
+syntax = "proto3"; // proto版本
+option go_package = "../proto"; // package包名
 
-service Greeter {
-  rpc SayHello (HelloRequest) returns (HelloReply);
+service Greeter { // 服务名
+  rpc SayHello (HelloRequest) returns (HelloReply); // 服务方法
 }
 
-message HelloRequest {
-  string name = 1;
+message HelloRequest { // 方法请求
+  string name = 1; // 1是编号，不是值
 }
 
-message HelloReply {
+message HelloReply { // 方法响应
   string message = 1;
 }
 

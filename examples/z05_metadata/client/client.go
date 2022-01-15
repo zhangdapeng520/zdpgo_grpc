@@ -6,7 +6,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
-	"zgo_grpc/examples/proto"
+	"zdpgo_grpc/examples/proto"
 )
 
 func main() {

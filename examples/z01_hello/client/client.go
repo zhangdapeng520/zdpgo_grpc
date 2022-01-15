@@ -4,8 +4,9 @@ import (
 	"context"
 	"fmt"
 
+	"zdpgo_grpc/examples/proto"
+
 	"google.golang.org/grpc"
-	"zgo_grpc/examples/proto"
 )
 
 func main() {

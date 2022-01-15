@@ -2,39 +2,38 @@ package main
 
 import (
 	"context"
+	"log"
 	"net"
 
+	pb "zdpgo_grpc/examples/proto"
+
 	"google.golang.org/grpc"
-	"zgo_grpc/examples/proto"
 )
 
-type Server struct{}
+const (
+	port = ":50051"
+)
 
-// 实现接口方法
-func (s *Server) SayHello(ctx context.Context, request *proto.HelloRequest) (*proto.HelloReply,
-	error) {
-	// 返回proto中定义的返回值类型
-	return &proto.HelloReply{
-		Message: "hello " + request.Name,
-	}, nil
+// server is used to implement helloworld.GreeterServer.
+type server struct {
+	pb.UnimplementedGreeterServer
+}
+
+// SayHello implements helloworld.GreeterServer
+func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	log.Printf("Received: %v", in.GetName())
+	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
 }
 
 func main() {
-	// 创建服务
-	g := grpc.NewServer()
-
-	// 注册服务
-	proto.RegisterGreeterServer(g, &Server{})
-
-	// 监听端口
-	lis, err := net.Listen("tcp", "0.0.0.0:50051")
+	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		panic("failed to listen:" + err.Error())
+		log.Fatalf("failed to listen: %v", err)
 	}
-
-	// 启动服务
-	err = g.Serve(lis)
-	if err != nil {
-		panic("failed to start grpc:" + err.Error())
+	s := grpc.NewServer()
+	pb.RegisterGreeterServer(s, &server{})
+	log.Printf("server listening at %v", lis.Addr())
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
 	}
 }

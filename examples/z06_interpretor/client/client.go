@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
-	"zgo_grpc/examples/proto"
+	"zdpgo_grpc/examples/proto"
 )
 
 func main() {
