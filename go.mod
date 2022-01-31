@@ -9,9 +9,11 @@ require (
 	google.golang.org/protobuf v1.27.1
 	github.com/zhangdapeng520/zdpgo_gin v0.1.0
 	github.com/zhangdapeng520/zdpgo_zap v0.1.0
+	github.com/zhangdapeng520/zdpgo_code v0.1.0
 )
 
 replace (
 	github.com/zhangdapeng520/zdpgo_gin v0.1.0 => ../zdpgo_gin
 	github.com/zhangdapeng520/zdpgo_zap v0.1.0 => ../zdpgo_zap
+	github.com/zhangdapeng520/zdpgo_code v0.1.0 => ../zdpgo_code
 )
