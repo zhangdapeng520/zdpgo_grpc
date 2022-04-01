@@ -116,6 +116,198 @@ func (x *EncryptResponse) GetBase64Encrypt() string {
 	return ""
 }
 
+// 加密字符串的请求
+type EncryptStringRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Data string `protobuf:"bytes,1,opt,name=data,proto3" json:"data,omitempty"` // 要加密的数据
+}
+
+func (x *EncryptStringRequest) Reset() {
+	*x = EncryptStringRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_password_proto_msgTypes[2]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EncryptStringRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EncryptStringRequest) ProtoMessage() {}
+
+func (x *EncryptStringRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_password_proto_msgTypes[2]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EncryptStringRequest.ProtoReflect.Descriptor instead.
+func (*EncryptStringRequest) Descriptor() ([]byte, []int) {
+	return file_password_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *EncryptStringRequest) GetData() string {
+	if x != nil {
+		return x.Data
+	}
+	return ""
+}
+
+// 加密字符串的响应
+type EncryptStringResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Base64Encrypt string `protobuf:"bytes,1,opt,name=base64_encrypt,json=base64Encrypt,proto3" json:"base64_encrypt,omitempty"` // base64编码后的加密数据
+}
+
+func (x *EncryptStringResponse) Reset() {
+	*x = EncryptStringResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_password_proto_msgTypes[3]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *EncryptStringResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*EncryptStringResponse) ProtoMessage() {}
+
+func (x *EncryptStringResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_password_proto_msgTypes[3]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use EncryptStringResponse.ProtoReflect.Descriptor instead.
+func (*EncryptStringResponse) Descriptor() ([]byte, []int) {
+	return file_password_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *EncryptStringResponse) GetBase64Encrypt() string {
+	if x != nil {
+		return x.Base64Encrypt
+	}
+	return ""
+}
+
+// 解密字符串的请求
+type DecryptStringRequest struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Base64Encrypt string `protobuf:"bytes,1,opt,name=base64_encrypt,json=base64Encrypt,proto3" json:"base64_encrypt,omitempty"` // 要加密的数据
+}
+
+func (x *DecryptStringRequest) Reset() {
+	*x = DecryptStringRequest{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_password_proto_msgTypes[4]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DecryptStringRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecryptStringRequest) ProtoMessage() {}
+
+func (x *DecryptStringRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_password_proto_msgTypes[4]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecryptStringRequest.ProtoReflect.Descriptor instead.
+func (*DecryptStringRequest) Descriptor() ([]byte, []int) {
+	return file_password_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *DecryptStringRequest) GetBase64Encrypt() string {
+	if x != nil {
+		return x.Base64Encrypt
+	}
+	return ""
+}
+
+// 解密字符串的响应
+type DecryptStringResponse struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	DecryptData string `protobuf:"bytes,1,opt,name=decrypt_data,json=decryptData,proto3" json:"decrypt_data,omitempty"` // base64编码后的加密数据
+}
+
+func (x *DecryptStringResponse) Reset() {
+	*x = DecryptStringResponse{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_password_proto_msgTypes[5]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *DecryptStringResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DecryptStringResponse) ProtoMessage() {}
+
+func (x *DecryptStringResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_password_proto_msgTypes[5]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DecryptStringResponse.ProtoReflect.Descriptor instead.
+func (*DecryptStringResponse) Descriptor() ([]byte, []int) {
+	return file_password_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *DecryptStringResponse) GetDecryptData() string {
+	if x != nil {
+		return x.DecryptData
+	}
+	return ""
+}
+
 var File_password_proto protoreflect.FileDescriptor
 
 var file_password_proto_rawDesc = []byte{
@@ -126,12 +318,35 @@ var file_password_proto_rawDesc = []byte{
 	0x61, 0x74, 0x61, 0x22, 0x38, 0x0a, 0x0f, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x52, 0x65,
 	0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x62, 0x61, 0x73, 0x65, 0x36, 0x34,
 	0x5f, 0x65, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d,
-	0x62, 0x61, 0x73, 0x65, 0x36, 0x34, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x32, 0x39, 0x0a,
-	0x09, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41, 0x65, 0x73, 0x12, 0x2c, 0x0a, 0x07, 0x45, 0x6e,
-	0x63, 0x72, 0x79, 0x70, 0x74, 0x12, 0x0f, 0x2e, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x52,
-	0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x10, 0x2e, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74,
-	0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65, 0x42, 0x0a, 0x5a, 0x08, 0x2e, 0x2e, 0x2f, 0x70,
-	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x62, 0x61, 0x73, 0x65, 0x36, 0x34, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x22, 0x2a, 0x0a,
+	0x14, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65,
+	0x71, 0x75, 0x65, 0x73, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x64, 0x61, 0x74, 0x61, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x04, 0x64, 0x61, 0x74, 0x61, 0x22, 0x3e, 0x0a, 0x15, 0x45, 0x6e, 0x63,
+	0x72, 0x79, 0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e,
+	0x73, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x62, 0x61, 0x73, 0x65, 0x36, 0x34, 0x5f, 0x65, 0x6e, 0x63,
+	0x72, 0x79, 0x70, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x62, 0x61, 0x73, 0x65,
+	0x36, 0x34, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x22, 0x3d, 0x0a, 0x14, 0x44, 0x65, 0x63,
+	0x72, 0x79, 0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73,
+	0x74, 0x12, 0x25, 0x0a, 0x0e, 0x62, 0x61, 0x73, 0x65, 0x36, 0x34, 0x5f, 0x65, 0x6e, 0x63, 0x72,
+	0x79, 0x70, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x62, 0x61, 0x73, 0x65, 0x36,
+	0x34, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x22, 0x3a, 0x0a, 0x15, 0x44, 0x65, 0x63, 0x72,
+	0x79, 0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73,
+	0x65, 0x12, 0x21, 0x0a, 0x0c, 0x64, 0x65, 0x63, 0x72, 0x79, 0x70, 0x74, 0x5f, 0x64, 0x61, 0x74,
+	0x61, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x63, 0x72, 0x79, 0x70, 0x74,
+	0x44, 0x61, 0x74, 0x61, 0x32, 0xb9, 0x01, 0x0a, 0x09, 0x53, 0x65, 0x72, 0x76, 0x65, 0x72, 0x41,
+	0x65, 0x73, 0x12, 0x2c, 0x0a, 0x07, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x12, 0x0f, 0x2e,
+	0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x10,
+	0x2e, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x3e, 0x0a, 0x0d, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e,
+	0x67, 0x12, 0x15, 0x2e, 0x45, 0x6e, 0x63, 0x72, 0x79, 0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e,
+	0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x45, 0x6e, 0x63, 0x72, 0x79,
+	0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x12, 0x3e, 0x0a, 0x0d, 0x44, 0x65, 0x63, 0x72, 0x79, 0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e,
+	0x67, 0x12, 0x15, 0x2e, 0x44, 0x65, 0x63, 0x72, 0x79, 0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e,
+	0x67, 0x52, 0x65, 0x71, 0x75, 0x65, 0x73, 0x74, 0x1a, 0x16, 0x2e, 0x44, 0x65, 0x63, 0x72, 0x79,
+	0x70, 0x74, 0x53, 0x74, 0x72, 0x69, 0x6e, 0x67, 0x52, 0x65, 0x73, 0x70, 0x6f, 0x6e, 0x73, 0x65,
+	0x42, 0x0a, 0x5a, 0x08, 0x2e, 0x2e, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x06, 0x70, 0x72,
+	0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -146,16 +361,24 @@ func file_password_proto_rawDescGZIP() []byte {
 	return file_password_proto_rawDescData
 }
 
-var file_password_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_password_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_password_proto_goTypes = []interface{}{
-	(*EncryptRequest)(nil),  // 0: EncryptRequest
-	(*EncryptResponse)(nil), // 1: EncryptResponse
+	(*EncryptRequest)(nil),        // 0: EncryptRequest
+	(*EncryptResponse)(nil),       // 1: EncryptResponse
+	(*EncryptStringRequest)(nil),  // 2: EncryptStringRequest
+	(*EncryptStringResponse)(nil), // 3: EncryptStringResponse
+	(*DecryptStringRequest)(nil),  // 4: DecryptStringRequest
+	(*DecryptStringResponse)(nil), // 5: DecryptStringResponse
 }
 var file_password_proto_depIdxs = []int32{
 	0, // 0: ServerAes.Encrypt:input_type -> EncryptRequest
-	1, // 1: ServerAes.Encrypt:output_type -> EncryptResponse
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
+	2, // 1: ServerAes.EncryptString:input_type -> EncryptStringRequest
+	4, // 2: ServerAes.DecryptString:input_type -> DecryptStringRequest
+	1, // 3: ServerAes.Encrypt:output_type -> EncryptResponse
+	3, // 4: ServerAes.EncryptString:output_type -> EncryptStringResponse
+	5, // 5: ServerAes.DecryptString:output_type -> DecryptStringResponse
+	3, // [3:6] is the sub-list for method output_type
+	0, // [0:3] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -191,6 +414,54 @@ func file_password_proto_init() {
 				return nil
 			}
 		}
+		file_password_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EncryptStringRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_password_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*EncryptStringResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_password_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DecryptStringRequest); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_password_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*DecryptStringResponse); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -198,7 +469,7 @@ func file_password_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_password_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

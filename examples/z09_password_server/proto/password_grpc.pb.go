@@ -19,6 +19,8 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type ServerAesClient interface {
 	Encrypt(ctx context.Context, in *EncryptRequest, opts ...grpc.CallOption) (*EncryptResponse, error)
+	EncryptString(ctx context.Context, in *EncryptStringRequest, opts ...grpc.CallOption) (*EncryptStringResponse, error)
+	DecryptString(ctx context.Context, in *DecryptStringRequest, opts ...grpc.CallOption) (*DecryptStringResponse, error)
 }
 
 type serverAesClient struct {
@@ -38,11 +40,31 @@ func (c *serverAesClient) Encrypt(ctx context.Context, in *EncryptRequest, opts 
 	return out, nil
 }
 
+func (c *serverAesClient) EncryptString(ctx context.Context, in *EncryptStringRequest, opts ...grpc.CallOption) (*EncryptStringResponse, error) {
+	out := new(EncryptStringResponse)
+	err := c.cc.Invoke(ctx, "/ServerAes/EncryptString", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *serverAesClient) DecryptString(ctx context.Context, in *DecryptStringRequest, opts ...grpc.CallOption) (*DecryptStringResponse, error) {
+	out := new(DecryptStringResponse)
+	err := c.cc.Invoke(ctx, "/ServerAes/DecryptString", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // ServerAesServer is the server API for ServerAes service.
 // All implementations must embed UnimplementedServerAesServer
 // for forward compatibility
 type ServerAesServer interface {
 	Encrypt(context.Context, *EncryptRequest) (*EncryptResponse, error)
+	EncryptString(context.Context, *EncryptStringRequest) (*EncryptStringResponse, error)
+	DecryptString(context.Context, *DecryptStringRequest) (*DecryptStringResponse, error)
 	mustEmbedUnimplementedServerAesServer()
 }
 
@@ -52,6 +74,12 @@ type UnimplementedServerAesServer struct {
 
 func (UnimplementedServerAesServer) Encrypt(context.Context, *EncryptRequest) (*EncryptResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Encrypt not implemented")
+}
+func (UnimplementedServerAesServer) EncryptString(context.Context, *EncryptStringRequest) (*EncryptStringResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method EncryptString not implemented")
+}
+func (UnimplementedServerAesServer) DecryptString(context.Context, *DecryptStringRequest) (*DecryptStringResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DecryptString not implemented")
 }
 func (UnimplementedServerAesServer) mustEmbedUnimplementedServerAesServer() {}
 
@@ -84,6 +112,42 @@ func _ServerAes_Encrypt_Handler(srv interface{}, ctx context.Context, dec func(i
 	return interceptor(ctx, in, info, handler)
 }
 
+func _ServerAes_EncryptString_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(EncryptStringRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServerAesServer).EncryptString(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ServerAes/EncryptString",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServerAesServer).EncryptString(ctx, req.(*EncryptStringRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _ServerAes_DecryptString_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DecryptStringRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ServerAesServer).DecryptString(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/ServerAes/DecryptString",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ServerAesServer).DecryptString(ctx, req.(*DecryptStringRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // ServerAes_ServiceDesc is the grpc.ServiceDesc for ServerAes service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -94,6 +158,14 @@ var ServerAes_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Encrypt",
 			Handler:    _ServerAes_Encrypt_Handler,
+		},
+		{
+			MethodName: "EncryptString",
+			Handler:    _ServerAes_EncryptString_Handler,
+		},
+		{
+			MethodName: "DecryptString",
+			Handler:    _ServerAes_DecryptString_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
