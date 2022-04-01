@@ -1,0 +1,4 @@
+password_server: # 密码服务
+  encrypt_algorithm: aes # 加密算法
+  aes_key: _ZhangDapeng520% # AES加密的key
+  aes_block_size: 16 # AES加密的块大小
