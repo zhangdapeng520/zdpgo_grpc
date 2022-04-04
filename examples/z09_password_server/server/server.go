@@ -20,19 +20,39 @@ func (s *ServerAes) Encrypt(ctx context.Context, request *proto.EncryptRequest) 
 
 // EncryptString 对字符串进行加密
 func (s *ServerAes) EncryptString(ctx context.Context, request *proto.EncryptStringRequest) (*proto.EncryptStringResponse, error) {
-	encryptData := g.Aes.EncryptString(request.Data)
+	// AES加密
+	//encryptData, err := g.Password.Aes.EncryptString(request.Data)
+
+	// RSA加密
+	//encryptData, err := g.Password.Rsa.EncryptString(request.Data)
+
+	// ECC加密
+	encryptData, err := g.Password.Rsa.EncryptString(request.Data)
+	if err != nil {
+		return nil, err
+	}
 	return &proto.EncryptStringResponse{Base64Encrypt: encryptData}, nil
 }
 
 // DecryptString 对字符串进行解密
 func (s *ServerAes) DecryptString(ctx context.Context, request *proto.DecryptStringRequest) (*proto.DecryptStringResponse, error) {
-	decryptData, _ := g.Aes.DecryptString(request.Base64Encrypt)
+	// AES解密
+	//decryptData, err := g.Password.Aes.DecryptString(request.Base64Encrypt)
+
+	// RSA解密
+	//decryptData, err := g.Password.Rsa.DecryptString(request.Base64Encrypt)
+
+	// ECC解密
+	decryptData, err := g.Password.Rsa.DecryptString(request.Base64Encrypt)
+	if err != nil {
+		return nil, err
+	}
 	return &proto.DecryptStringResponse{DecryptData: decryptData}, nil
 }
 
 func main() {
 	// 查看配置
-	fmt.Println("使用配置中的加密算法：", g.Config.PasswordServer.EncryptAlgorithm)
+	fmt.Println("配置信息：", g.Config)
 
 	// 创建服务
 	g := grpc.NewServer()

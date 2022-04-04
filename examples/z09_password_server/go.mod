@@ -3,15 +3,13 @@ module server
 go 1.17
 
 require (
-	github.com/zhangdapeng520/zdpgo_password v1.1.0
+	github.com/zhangdapeng520/zdpgo_password v1.1.2
 	github.com/zhangdapeng520/zdpgo_yaml v0.1.0
 	google.golang.org/grpc v1.45.0
 	google.golang.org/protobuf v1.26.0
 )
 
 require (
-	github.com/decred/dcrd/dcrec/secp256k1/v4 v4.0.1 // indirect
-	github.com/ethereum/go-ethereum v1.10.17 // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/zhangdapeng520/zdpgo_log v0.1.0 // indirect
 	golang.org/x/crypto v0.0.0-20220321153916-2c7772ba3064 // indirect

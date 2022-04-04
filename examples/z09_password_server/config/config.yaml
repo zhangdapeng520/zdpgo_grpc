@@ -1,4 +1,11 @@
-password_server: # 密码服务
-  encrypt_algorithm: aes # 加密算法
-  aes_key: _ZhangDapeng520% # AES加密的key
-  aes_block_size: 16 # AES加密的块大小
+password_config:
+  aes:
+    key: _ZhangDapeng520% # AES加密的key
+    block_size: 16 # AES加密的块大小
+  rsa:
+    private_key_path: config/cert/private.pem # 私钥路径
+    public_key_path: config/cert/public.pem # 公钥路径
+    bit_size: 2048 # 私钥字节数
+  hash:
+    key: _ZhangDapeng520% # hash算法的盐值
+    algorithm: sha256 # 默认使用的hash算法
