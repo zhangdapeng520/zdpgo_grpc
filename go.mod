@@ -1,4 +1,4 @@
-module zdpgo_grpc
+module github.com/zhangdapeng520/zdpgo_grpc
 
 go 1.16
 
