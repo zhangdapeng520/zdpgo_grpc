@@ -3,6 +3,7 @@ package zdpgo_grpc
 import (
 	"context"
 	"fmt"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
@@ -31,9 +32,8 @@ func (g *Grpc) GetClientConn() (conn *grpc.ClientConn, err error) {
 	address := fmt.Sprintf("%s:%d", g.Config.Client.Host, g.Config.Client.Port)
 	conn, err = grpc.Dial(address, opts...)
 	if err != nil {
-		g.Log.Error("获取客户端连接失败", "error", err, "address", address)
+		return nil, err
 	}
-	g.Log.Debug("获取GRPC客户端成功", "address", address)
 
 	// 创建具体的GRPC客户端
 	return
@@ -95,7 +95,6 @@ func (g *Grpc) GetAuthInterceptor(username, password string) grpc.ServerOption {
 			}
 
 			// 校验成功
-			g.Log.Debug("权限校验成功", "username", username)
 			return nil
 		}
 		return status.Error(codes.Unauthenticated, "无token认证信息")

@@ -1,6 +1,10 @@
 package zdpgo_grpc
 
-import "google.golang.org/grpc"
+import (
+	"errors"
+
+	"google.golang.org/grpc"
+)
 
 /*
 @Time : 2022/5/21 15:47
@@ -10,15 +14,17 @@ import "google.golang.org/grpc"
 @Description: close类型的关闭方法
 */
 
-func (g *Grpc) CloseClient(conn *grpc.ClientConn) {
+func (g *Grpc) CloseClient(conn *grpc.ClientConn) error {
 	// 不需要关闭
 	if conn == nil {
-		return
+		return errors.New("client connection is nil")
 	}
 
 	// 关闭连接
 	err := conn.Close()
 	if err != nil {
-		g.Log.Error("关闭客户端连接失败", "error", err)
+		return err
 	}
+
+	return nil
 }

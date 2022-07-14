@@ -1,14 +1,9 @@
 package zdpgo_grpc
 
-import (
-	"github.com/zhangdapeng520/zdpgo_log"
-)
-
 // Grpc 核心对象
 type Grpc struct {
-	Log        *zdpgo_log.Log // 日志对象
-	Config     *Config        // 配置对象
-	Credential *Credential    // 自定义校验对象
+	Config     *Config     // 配置对象
+	Credential *Credential // 自定义校验对象
 }
 
 func New() *Grpc {
@@ -17,12 +12,6 @@ func New() *Grpc {
 
 func NewWithConfig(config *Config) *Grpc {
 	g := &Grpc{}
-
-	// 日志
-	if config.LogFilePath == "" {
-		config.LogFilePath = "logs/zdpgo/zdpgo_grpc.log"
-	}
-	g.Log = zdpgo_log.NewWithDebug(config.Debug, config.LogFilePath)
 
 	// 配置
 	if config.Server.Host == "" {
